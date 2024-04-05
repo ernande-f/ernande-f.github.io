@@ -3,12 +3,15 @@
 		<title>My webpage</title>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://tilde.club/style.css">
 	</head>
 	<header class="constant">
 	<center>
-	<nav>
-		<a href="about.html">About</a>
+	<nav id="navbar">
+		<a href="about/index.html">About</a>
+		<a href="articles/index.html">Articles</a>
+		<a href="projects/index.html">Projects</a>
 	</nav>
 	</center>
 	</header>
@@ -19,7 +22,7 @@
 		
 			<br>
 		
-		    <h2>This is probably where I will post projects that I be working.</h2>
+		    <h3>This is probably where I will post projects that I be working.</h3>
 
 			</center>
 		</div>
@@ -36,12 +39,9 @@
 		</div>
 		
 		
-		<div class="box"><strong><span style="font-size: large;">Studying:</span></strong>
-		Currently studying: <span>React</span> and <span>Python</span>
-		<br>
-		<img style="margin-bottom: 05px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png">
-		<img style="height: 30px; margin-top: 0px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/800px-Python-logo-notext.svg.png">
-		
+		<div class="box"><strong><span style="font-size: large;">Studying:</span></strong> Currently studying: <span>Python</span>
+			<br>
+			<img style="height: 30px; margin-top: 21px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/800px-Python-logo-notext.svg.png">
 		</div>
 		
 		
@@ -56,23 +56,27 @@
 		
 		</div>
 		
-		
-		<div class="box"><strong><span style="font-size: large;">Currently listening:</span></strong>
-			
-			<hr>
-			Implementing the API 
-			...
-		
-		
-		</div>
-
 
 	</footer>
+
+	<div class="badge-dad">
+		<br>	
+		<div class="badges">
+			<a href="https://api.statusbadges.me/openspotify/366261340253323274" target="_blank" rel="noopener"><img src="https://api.statusbadges.me/badge/spotify/366261340253323274?simple=true&style=simple" alt="spotify"></a>
+		</div>
+	
+	</div>
+
 
 
 </html>
 <script defer data-domain="ernande.is-a.dev" src="https://analytics.is-a.dev/js/script.js"></script>
 <style>
+	footer {
+		justify-content: center;
+		display: flex;
+	}
+	
 	.box {
   		width: 200px;
   		height: 100px;
@@ -83,13 +87,23 @@
 		display: inline-block;
 		position: relative;
 		float: left;
+		justify-content: flex;
 	
 }
-	img {
-		width: 30px;
-		height: 25px;
+	.badge-dad {
+	  		width: 200px;
+	  		height: 100px;
+	 		padding: 10px;
+	 		margin: 10px;
+			display: inline;
+			position: relative;
+			float: down;
+
+}
+	.badges {
 		padding-top: 10px;
-		padding-left: 10px;
+		display: flex;
+		justify-content: center;
 }
 	span {
 		color:#f50;
