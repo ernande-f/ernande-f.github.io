@@ -72,28 +72,6 @@
 </html>
 <script defer data-domain="ernande.is-a.dev" src="https://analytics.is-a.dev/js/script.js"></script>
 
-<script>
-	function isChromeDesktopMode() {
-    const viewportWidth = window.innerWidth;
-    const minWidthForMobile = 360; // Typical mobile viewport width, adjust as needed
-    const userAgent = navigator.userAgent;
-    const isChrome = /Chrome/i.test(userAgent);
-
-    if (isChrome && viewportWidth >= minWidthForMobile) {
-        // Check for Chrome and viewport width exceeding typical mobile width
-        return true;
-    }
-
-    return false;
-}
-
-if (isChromeDesktopMode()) {
-	window.location.href = "https://ernande.is-a.dev/#.html";
-} else {
-    document.location = "mobile.html"
-}
-
-</script>
 <style>
 	footer {
 		justify-content: center;
