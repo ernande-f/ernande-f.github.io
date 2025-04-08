@@ -1,0 +1,99 @@
+body{
+    font-family: cursive;
+    background-color: #ffcccc;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header h1{
+    font-size: 50px;
+    font-family: Impact;
+    text-align: center;
+}
+
+hr {
+    height: 2px;
+    background-color: #333;
+    border: none;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.sub{
+    font-size: 20px;
+    text-align: center;
+}
+
+p{
+    margin: 0;
+}
+p::before{
+    content: "• ";
+    color: #333;
+}
+
+.if{
+    font-weight: bold;
+    color: green;
+}
+
+a{
+    color: green;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 18px;
+    color: #333;
+}
+
+footer p{
+    align-self: flex-start;
+}
+
+.fotos{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+    max-width: 100%;
+}
+
+.fotos img{
+    max-width: 250px;
+    max-height: 200px;
+    object-fit: cover;
+    border: 2px solid #333;
+    border-radius: 5px;
+}
+
+#ary::after{
+    content: "❤️";
+}
+#namorado{
+    color: red;
+    font-weight: bold;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+nav ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    gap: 20px;
+    margin: 0;
+}
