@@ -76,6 +76,43 @@ footer p{
     border-radius: 5px;
 }
 
+.fotos2{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+    max-width: 100%;
+}
+
+.fotos2 img{
+    max-width: 250px;
+    max-height: 200px;
+    object-fit: cover;
+    border: 2px solid #333;
+    border-radius: 5px;
+}
+
+.fotos2 img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+.fotos img:hover{
+    cursor: pointer;
+    transform: scale(1.4);
+    transition: transform 0.3s ease;
+}
+
+.fotos2 img:active{
+    transform: scale(0.9);
+    transition: transform 0.1s ease;
+}
+.fotos img:active{
+    transform: scale(0.9);
+    transition: transform 0.1s ease;
+}
+
 #ary::after{
     content: "❤️";
 }
