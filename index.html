@@ -1,13 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>redirecionamento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ernande Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        window.location.href = "ernande_facco.html";
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
     </script>
 </head>
-<body>
-    <p>Se o redirecionamento não funcionar, <a href="ernande_facco.html">clique aqui</a>.</p>
+<body class="font-inter bg-neutral-800 min-h-screen overflow-x-hidden">
+    <div class="min-h-screen w-full relative bg-neutral-800">
+        
+        <header class="w-full h-16 md:h-20 bg-red-700/20 relative z-10">
+            <div class="flex justify-center items-center h-full px-4">
+                <div class="flex flex-col sm:flex-row gap-1 sm:gap-0">
+                    <div class="relative">
+                        <button id="homeBtn" class="w-24 sm:w-28 h-10 sm:h-12 bg-red-600/40 rounded-tl-lg rounded-bl-lg border-r-2 border-neutral-600 flex items-center justify-center hover:bg-red-600/60 transition-colors duration-200" onclick="showHome()">
+                            <span class="text-neutral-800 text-sm sm:text-base font-medium font-inter tracking-wide">home</span>
+                        </button>
+                    </div>
+                    
+                    <div class="relative">
+                        <button id="aboutBtn" class="w-24 sm:w-28 h-10 sm:h-12 bg-red-600 rounded-tr-lg rounded-br-lg flex items-center justify-center hover:bg-red-700 transition-colors duration-200" onclick="showAbout()">
+                            <span class="text-neutral-800 text-sm sm:text-base font-medium font-inter tracking-wide">about</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex flex-col items-center justify-start min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] px-4 pt-8 sm:pt-10 md:pt-12 lg:pt-14 xl:pt-16 pb-4">
+            <div class="text-center mb-6 md:mb-8">
+                <h1 class="text-neutral-50 text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-thin font-inter tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] leading-tight">
+                    ernande
+                </h1>
+            </div>
+
+            <div id="homeContent" class="flex flex-col items-center mt-4 sm:mt-6 md:mt-8">
+                <a href="https://github.com/ernande-f/" target="_blank" class="text-red-400 text-sm sm:text-base md:text-lg font-normal font-inter underline tracking-wider hover:text-red-300 transition-colors duration-200">
+                    Github
+                </a>
+                <a href="mailto:ernande@duck.com" target="_blank" class="text-red-400 text-sm sm:text-base md:text-lg font-normal font-inter underline tracking-wider hover:text-red-300 transition-colors duration-200">
+                    E-mail
+                </a>
+                <a href="https://x.com/euernande" target="_blank" class="text-red-400 text-sm sm:text-base md:text-lg font-normal font-inter underline tracking-wider hover:text-red-300 transition-colors duration-200">
+                    X
+                </a>
+            </div>
+
+            <div id="aboutContent" class="hidden text-center mt-4 sm:mt-6 md:mt-8">
+                <p class="text-red-400 text-sm sm:text-base md:text-lg font-normal font-inter tracking-wider">
+                    Highschool student interested in tech that studies IT.
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
