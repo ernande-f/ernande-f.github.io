@@ -242,6 +242,7 @@ button,a{cursor:pointer;touch-action:manipulation}
 .clients__star{color:var(--red);font-size:.75rem}
 
 .clients__arrow{width:14px;height:14px;color:var(--white);transition:color .3s,transform .4s var(--ease);flex-shrink:0}
+.clients__arrow-link{display:inline-flex;align-items:center;flex-shrink:0}
 .clients__item:hover .clients__arrow{color:var(--red);transform:translate(4px,-4px)}
 
 /* Featured */
