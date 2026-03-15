@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/screenshot.png" alt="Ernande - Editor de Vídeo" width="100%" />
+  <img src="og-image.png" alt="Ernande - Editor de Vídeo" width="100%" />
   
   <br />
   <br />
