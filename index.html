@@ -1,74 +1,497 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ernande's site</title>
+    <title>Ernande — Editor de Vídeo</title>
+    <meta name="description"
+        content="Portfólio de edição de vídeos profissional. Conteúdo audiovisual de alto impacto para marcas e empresas.">
+    <meta name="author" content="Ernande">
+    <meta name="theme-color" content="#0A0A0A">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 </head>
-<body class="font-inter bg-neutral-800 min-h-screen overflow-x-hidden">
-    <div class="min-h-screen w-full relative bg-neutral-800">
-        
-        <header class="w-full h-16 md:h-20 bg-red-700/20 relative z-10">
-            <div class="flex justify-center items-center h-full px-4">
-                <div class="flex flex-col sm:flex-row gap-1 sm:gap-0">
-                    <div class="relative">
-                        <button id="homeBtn" class="w-24 sm:w-28 h-10 sm:h-12 bg-red-600/40 rounded-tl-lg rounded-bl-lg border-r-2 border-neutral-600 flex items-center justify-center hover:bg-red-600/60 transition-colors duration-200" onclick="showHome()">
-                            <span class="text-neutral-800 text-sm sm:text-base font-medium font-inter tracking-wide">home</span>
-                        </button>
-                    </div>
-                    
-                    <div class="relative">
-                        <button id="aboutBtn" class="w-24 sm:w-28 h-10 sm:h-12 bg-red-600 rounded-tr-lg rounded-br-lg flex items-center justify-center hover:bg-red-700 transition-colors duration-200" onclick="showAbout()">
-                            <span class="text-neutral-800 text-sm sm:text-base font-medium font-inter tracking-wide">about</span>
-                        </button>
-                    </div>
+
+<body>
+
+    <!-- Film Grain -->
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="#hero" class="nav__logo">
+                <span class="nav__logo-text">ERN</span><span class="nav__logo-accent">ANDE</span>
+            </a>
+            <div class="nav__links" id="navLinks">
+                <a href="#portfolio" class="nav__link" data-cursor="hover">Trabalhos</a>
+                <a href="#clientes" class="nav__link" data-cursor="hover">Clientes</a>
+                <a href="#sobre" class="nav__link" data-cursor="hover">Sobre</a>
+                <a href="#contato" class="nav__link nav__link--cta" data-cursor="hover">
+                    <span>Contato</span>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" />
+                    </svg>
+                </a>
+            </div>
+            <button class="nav__burger" id="navBurger" aria-label="Menu" data-cursor="hover">
+                <div class="nav__burger-lines">
+                    <span></span><span></span>
                 </div>
-            </div>
-        </header>
+            </button>
+        </div>
+    </nav>
 
-        <main class="flex flex-col items-center justify-start min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] px-4 pt-8 sm:pt-10 md:pt-12 lg:pt-14 xl:pt-16 pb-4">
-            <div class="text-center mb-6 md:mb-8">
-                <h1 class="text-neutral-50 text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-thin font-inter tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] leading-tight">
-                    ernande
-                </h1>
-            </div>
-
-            <div id="homeContent" class="flex flex-col items-center mt-4 sm:mt-6 md:mt-8">
-                <a href="https://github.com/ernande-f/" target="_blank" class="text-red-400 text-sm sm:text-base md:text-lg font-normal font-inter underline tracking-wider hover:text-red-300 transition-colors duration-200">
-                    Github
-                </a>
-                <a href="mailto:ernande@duck.com" target="_blank" class="text-red-400 text-sm sm:text-base md:text-lg font-normal font-inter underline tracking-wider hover:text-red-300 transition-colors duration-200">
-                    E-mail
-                </a>
-                <a href="https://x.com/euernande" target="_blank" class="text-red-400 text-sm sm:text-base md:text-lg font-normal font-inter underline tracking-wider hover:text-red-300 transition-colors duration-200">
-                    X
-                </a>
-            </div>
-
-            <div id="aboutContent" class="hidden text-center mt-4 sm:mt-6 md:mt-8">
-                <p class="text-red-400 text-sm sm:text-base md:text-lg font-normal font-inter tracking-wider">
-                    High school student interested in tech, studying IT.
-                </p>
-            </div>
-        </main>
+    <!-- Mobile Menu -->
+    <div class="mmenu" id="mmenu">
+        <div class="mmenu__bg"></div>
+        <div class="mmenu__content">
+            <a href="#portfolio" class="mmenu__link" data-cursor="hover">
+                <span class="mmenu__link-num">01</span>
+                <span class="mmenu__link-text">Trabalhos</span>
+            </a>
+            <a href="#clientes" class="mmenu__link" data-cursor="hover">
+                <span class="mmenu__link-num">02</span>
+                <span class="mmenu__link-text">Clientes</span>
+            </a>
+            <a href="#sobre" class="mmenu__link" data-cursor="hover">
+                <span class="mmenu__link-num">03</span>
+                <span class="mmenu__link-text">Sobre</span>
+            </a>
+            <a href="#contato" class="mmenu__link" data-cursor="hover">
+                <span class="mmenu__link-num">04</span>
+                <span class="mmenu__link-text">Contato</span>
+            </a>
+        </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <!-- ====== HERO ====== -->
+    <section class="hero" id="hero">
+        <!-- Decorative grid lines -->
+        <div class="hero__grid" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <!-- Gradient mesh bg -->
+        <div class="hero__mesh" aria-hidden="true">
+            <div class="hero__mesh-orb hero__mesh-orb--red"></div>
+            <div class="hero__mesh-orb hero__mesh-orb--green"></div>
+            <div class="hero__mesh-orb hero__mesh-orb--dark"></div>
+        </div>
+
+        <div class="hero__content">
+            <div class="hero__eyebrow" data-reveal>
+                <span class="hero__eyebrow-dot"></span>
+                <span>Disponível para projetos</span>
+            </div>
+
+            <h1 class="hero__title">
+                <span class="hero__title-main">
+                    <span class="hero__char-wrap"><span class="hero__char">E</span></span><span
+                        class="hero__char-wrap"><span class="hero__char">R</span></span><span
+                        class="hero__char-wrap"><span class="hero__char">N</span></span><span
+                        class="hero__char-wrap"><span class="hero__char">A</span></span><span
+                        class="hero__char-wrap"><span class="hero__char">N</span></span><span
+                        class="hero__char-wrap"><span class="hero__char">D</span></span><span
+                        class="hero__char-wrap"><span class="hero__char">E</span></span>
+                </span>
+            </h1>
+
+            <div class="hero__sub" data-reveal>
+                <div class="hero__sub-line"></div>
+                <span class="hero__sub-text">Editor de Vídeo</span>
+                <div class="hero__sub-line"></div>
+            </div>
+
+            <p class="hero__desc" data-reveal>
+                Transformando ideias em conteúdo audiovisual de alto impacto.<br>
+                Edição profissional para marcas que querem se destacar.
+            </p>
+
+            <div class="hero__ctas" data-reveal>
+                <a href="#portfolio" class="btn btn--primary" data-cursor="hover" data-magnetic>
+                    <span class="btn__text">Ver trabalhos</span>
+                    <span class="btn__arrow">→</span>
+                </a>
+                <a href="#contato" class="btn btn--outline" data-cursor="hover" data-magnetic>
+                    <span class="btn__text">Fale comigo</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll cue -->
+        <div class="hero__scroll" data-reveal>
+            <span class="hero__scroll-text">scroll</span>
+            <div class="hero__scroll-track">
+                <div class="hero__scroll-thumb"></div>
+            </div>
+        </div>
+
+        <!-- Corner decorations -->
+        <div class="hero__corner hero__corner--tl" aria-hidden="true"></div>
+        <div class="hero__corner hero__corner--br" aria-hidden="true"></div>
+    </section>
+
+    <!-- Marquee Ticker -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+            <span class="ticker__item">Edição de Vídeo</span>
+            <span class="ticker__sep">✦</span>
+            <span class="ticker__item">Reels</span>
+            <span class="ticker__sep">✦</span>
+            <span class="ticker__item">Conteúdo para Redes</span>
+            <span class="ticker__sep">✦</span>
+            <span class="ticker__item">Color Grading</span>
+            <span class="ticker__sep">✦</span>
+            <span class="ticker__item">Edição de Vídeo</span>
+            <span class="ticker__sep">✦</span>
+            <span class="ticker__item">Reels</span>
+            <span class="ticker__sep">✦</span>
+            <span class="ticker__item">Conteúdo para Redes</span>
+            <span class="ticker__sep">✦</span>
+            <span class="ticker__item">Color Grading</span>
+            <span class="ticker__sep">✦</span>
+        </div>
+    </div>
+
+    <!-- ====== PORTFOLIO ====== -->
+    <section class="section portfolio" id="portfolio">
+        <header class="section__head" data-reveal>
+            <div class="section__label">
+                <span class="section__num">01</span>
+                <span class="section__dash"></span>
+                <span class="section__tag">Portfólio</span>
+            </div>
+            <h2 class="section__title">Trabalhos<br><em>selecionados</em></h2>
+        </header>
+
+        <div class="reel">
+            <div class="reel__card" data-video-id="VNH_n9pUY5Y">
+                <div class="reel__thumb">
+                    <img src="https://img.youtube.com/vi/VNH_n9pUY5Y/hqdefault.jpg" alt="Projeto de edição 1"
+                        loading="lazy">
+                    <div class="reel__overlay">
+                        <div class="reel__play" data-cursor="play">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="6,3 20,12 6,21" />
+                            </svg>
+                        </div>
+                        <span class="reel__watch">Assistir</span>
+                    </div>
+                </div>
+                <div class="reel__meta">
+                    <span class="reel__label">Reels / Curta</span>
+                    <span class="reel__dot">●</span>
+                    <span class="reel__label">Edição</span>
+                </div>
+            </div>
+
+            <div class="reel__card" data-video-id="NRirHkJlBn8">
+                <div class="reel__thumb">
+                    <img src="https://img.youtube.com/vi/NRirHkJlBn8/hqdefault.jpg" alt="Projeto de edição 2"
+                        loading="lazy">
+                    <div class="reel__overlay">
+                        <div class="reel__play" data-cursor="play">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="6,3 20,12 6,21" />
+                            </svg>
+                        </div>
+                        <span class="reel__watch">Assistir</span>
+                    </div>
+                </div>
+                <div class="reel__meta">
+                    <span class="reel__label">Reels / Curta</span>
+                    <span class="reel__dot">●</span>
+                    <span class="reel__label">Edição</span>
+                </div>
+            </div>
+
+            <div class="reel__card" data-video-id="YMRKqzmHOi4">
+                <div class="reel__thumb">
+                    <img src="https://img.youtube.com/vi/YMRKqzmHOi4/hqdefault.jpg" alt="Projeto de edição 3"
+                        loading="lazy">
+                    <div class="reel__overlay">
+                        <div class="reel__play" data-cursor="play">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="6,3 20,12 6,21" />
+                            </svg>
+                        </div>
+                        <span class="reel__watch">Assistir</span>
+                    </div>
+                </div>
+                <div class="reel__meta">
+                    <span class="reel__label">Reels / Curta</span>
+                    <span class="reel__dot">●</span>
+                    <span class="reel__label">Edição</span>
+                </div>
+            </div>
+
+            <div class="reel__card" data-video-id="SiXFEjd1HQI">
+                <div class="reel__thumb">
+                    <img src="https://img.youtube.com/vi/SiXFEjd1HQI/hqdefault.jpg" alt="Projeto de edição 4"
+                        loading="lazy">
+                    <div class="reel__overlay">
+                        <div class="reel__play" data-cursor="play">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="6,3 20,12 6,21" />
+                            </svg>
+                        </div>
+                        <span class="reel__watch">Assistir</span>
+                    </div>
+                </div>
+                <div class="reel__meta">
+                    <span class="reel__label">Reels / Curta</span>
+                    <span class="reel__dot">●</span>
+                    <span class="reel__label">Edição</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="modal" id="videoModal" role="dialog" aria-modal="true">
+        <div class="modal__backdrop" id="modalBackdrop"></div>
+        <div class="modal__shell">
+            <button class="modal__close" id="modalClose" aria-label="Fechar" data-cursor="hover">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+            <div class="modal__frame" id="modalFrame"></div>
+        </div>
+    </div>
+
+    <!-- ====== CLIENTES ====== -->
+    <section class="section clientes" id="clientes">
+        <header class="section__head" data-reveal>
+            <div class="section__label">
+                <span class="section__num">02</span>
+                <span class="section__dash"></span>
+                <span class="section__tag">Clientes</span>
+            </div>
+            <h2 class="section__title">Marcas que<br><em>confiam</em></h2>
+        </header>
+
+        <div class="clients">
+            <a href="https://www.instagram.com/vendanaobra/" target="_blank" rel="noopener" class="clients__item"
+                data-reveal data-cursor="hover">
+                <div class="clients__row">
+                    <span class="clients__name">Venda na Obra</span>
+                    <div class="clients__icons">
+                        <span class="clients__platform" title="Instagram">IG</span>
+                        <span class="clients__platform clients__platform--yt" title="YouTube"
+                            onclick="window.open('https://www.youtube.com/@vendanaobra', '_blank'); event.preventDefault(); event.stopPropagation()">YT</span>
+                    </div>
+                </div>
+                <svg class="clients__arrow" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+            </a>
+
+            <a href="https://www.instagram.com/reffine.acabamentos/" target="_blank" rel="noopener"
+                class="clients__item clients__item--highlight" data-cursor="hover">
+                <div class="clients__row">
+                    <span class="clients__name">Reffine Acabamentos</span>
+                    <div class="clients__icons">
+                        <span class="clients__platform">IG</span>
+                        <span class="clients__star">★</span>
+                    </div>
+                </div>
+                <svg class="clients__arrow" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+            </a>
+
+            <a href="https://www.instagram.com/marcenaria.loft/" target="_blank" rel="noopener" class="clients__item"
+                data-reveal data-cursor="hover">
+                <div class="clients__row">
+                    <span class="clients__name">Marcenaria Loft</span>
+                    <div class="clients__icons">
+                        <span class="clients__platform">IG</span>
+                    </div>
+                </div>
+                <svg class="clients__arrow" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+            </a>
+
+            <a href="https://www.instagram.com/mktparaesquadrias/" target="_blank" rel="noopener" class="clients__item"
+                data-reveal data-cursor="hover">
+                <div class="clients__row">
+                    <span class="clients__name">MKT para Esquadrias</span>
+                    <div class="clients__icons">
+                        <span class="clients__platform">IG</span>
+                    </div>
+                </div>
+                <svg class="clients__arrow" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+            </a>
+
+            <a href="https://www.instagram.com/consult.glass/" target="_blank" rel="noopener" class="clients__item"
+                data-reveal data-cursor="hover">
+                <div class="clients__row">
+                    <span class="clients__name">Consult Glass</span>
+                    <div class="clients__icons">
+                        <span class="clients__platform">IG</span>
+                    </div>
+                </div>
+                <svg class="clients__arrow" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+            </a>
+
+            <a href="https://www.instagram.com/perffecesquadrias/" target="_blank" rel="noopener"
+                class="clients__item clients__item--highlight" data-reveal data-cursor="hover">
+                <div class="clients__row">
+                    <span class="clients__name">Perffec Esquadrias</span>
+                    <div class="clients__icons">
+                        <span class="clients__platform">IG</span>
+                        <span class="clients__star">★</span>
+                    </div>
+                </div>
+                <svg class="clients__arrow" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+            </a>
+
+            <a href="https://www.instagram.com/anajuraszck/" target="_blank" rel="noopener" class="clients__item"
+                data-reveal data-cursor="hover">
+                <div class="clients__row">
+                    <span class="clients__name">Ana Juraszck</span>
+                    <div class="clients__icons">
+                        <span class="clients__platform">IG</span>
+                    </div>
+                </div>
+                <svg class="clients__arrow" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+            </a>
+        </div>
+
+        <!-- Featured edits -->
+        <div class="featured" data-reveal>
+            <h3 class="featured__heading">Edições em destaque</h3>
+            <div class="featured__row">
+                <a href="https://www.instagram.com/p/DUbqcL_Du-4/" target="_blank" rel="noopener" class="featured__link"
+                    data-cursor="hover">
+                    <span>Reffine Acabamentos</span>
+                    <span class="featured__cta">Ver no Instagram <svg width="12" height="12" viewBox="0 0 14 14"
+                            fill="none">
+                            <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" />
+                        </svg></span>
+                </a>
+                <a href="https://www.instagram.com/p/DVZa9koCrAm/" target="_blank" rel="noopener" class="featured__link"
+                    data-cursor="hover">
+                    <span>Perffec Esquadrias</span>
+                    <span class="featured__cta">Ver no Instagram <svg width="12" height="12" viewBox="0 0 14 14"
+                            fill="none">
+                            <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" />
+                        </svg></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== SOBRE ====== -->
+    <section class="section sobre" id="sobre">
+        <header class="section__head" data-reveal>
+            <div class="section__label">
+                <span class="section__num">03</span>
+                <span class="section__dash"></span>
+                <span class="section__tag">Sobre</span>
+            </div>
+            <h2 class="section__title">Quem sou<br><em>eu</em></h2>
+        </header>
+
+        <div class="about" data-reveal>
+            <div class="about__body">
+                <p class="about__lead">
+                    Sou <strong>Ernande</strong> — editor de vídeo com foco em conteúdo para redes sociais e marcas do
+                    segmento de construção, acabamentos e esquadrias.
+                </p>
+                <p>
+                    Atualmente sou estudante do ensino médio e curso o <strong>técnico em informática</strong>, o que me
+                    dá uma base sólida tanto na parte criativa quanto na técnica.
+                </p>
+                <p>
+                    Meu trabalho é transformar material bruto em vídeos que capturam atenção, comunicam valor e geram
+                    resultados para os meus clientes. Desde reels dinâmicos até conteúdo institucional — cada projeto é
+                    tratado com atenção aos detalhes e foco no impacto visual.
+                </p>
+            </div>
+            <div class="about__metrics">
+                <div class="about__metric">
+                    <span class="about__metric-val" data-count="7">0</span><span class="about__metric-plus">+</span>
+                    <span class="about__metric-lbl">Clientes</span>
+                </div>
+                <div class="about__metric">
+                    <span class="about__metric-val" data-count="85">0</span><span class="about__metric-plus">+</span>
+                    <span class="about__metric-lbl">Vídeos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTATO ====== -->
+    <section class="section contato" id="contato">
+        <div class="cta-block">
+            <div class="cta-block__mesh" aria-hidden="true">
+                <div class="cta-block__orb cta-block__orb--1"></div>
+                <div class="cta-block__orb cta-block__orb--2"></div>
+            </div>
+            <span class="cta-block__eyebrow">Entre em contato</span>
+            <h2 class="cta-block__title">Vamos trabalhar<br>juntos<span class="cta-block__q">?</span></h2>
+            <p class="cta-block__desc">
+                Tem um projeto em mente? Vamos transformar sua ideia em realidade.
+            </p>
+            <div class="cta-block__links">
+                <a href="mailto:ernande@duck.com" class="cta-block__link" data-cursor="hover">
+                    <span class="cta-block__link-label">Email</span>
+                    <span class="cta-block__link-val">ernande@duck.com</span>
+                </a>
+                <a href="https://www.instagram.com/ernande.1/" target="_blank" rel="noopener" class="cta-block__link"
+                    data-cursor="hover">
+                    <span class="cta-block__link-label">Instagram</span>
+                    <span class="cta-block__link-val">@ernande.1</span>
+                </a>
+                <a href="https://x.com/euernande" target="_blank" rel="noopener" class="cta-block__link"
+                    data-cursor="hover">
+                    <span class="cta-block__link-label">X / Twitter</span>
+                    <span class="cta-block__link-val">@euernande</span>
+                </a>
+                <a href="https://github.com/ernande-f/" target="_blank" rel="noopener" class="cta-block__link"
+                    data-cursor="hover">
+                    <span class="cta-block__link-label">GitHub</span>
+                    <span class="cta-block__link-val">ernande-f</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <span class="footer__cr">© 2025 Ernande</span>
+            <span class="footer__sep">—</span>
+            <span class="footer__tagline">Feito com dedicação</span>
+        </div>
+    </footer>
+
     <script src="index.js"></script>
 </body>
+
 </html>
